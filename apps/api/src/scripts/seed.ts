@@ -16,8 +16,8 @@ async function run() {
   // Ensure tables exist
   await sequelize.sync();
 
-  const [math] = await Subject.findOrCreate({ where: { name: 'Math' }, defaults: { name: 'Math' } });
-  const [english] = await Subject.findOrCreate({ where: { name: 'English' }, defaults: { name: 'English' } });
+  const [math] = await Subject.findOrCreate({ where: { name: 'Math' }, defaults: { id: 'math-uuid', name: 'Math' } });
+  const [english] = await Subject.findOrCreate({ where: { name: 'English' }, defaults: { id: 'english-uuid', name: 'English' } });
 
   const email = 'tutor@example.com';
   const passwordHash = await bcrypt.hash('secret123', 10);
@@ -31,8 +31,8 @@ async function run() {
     defaults: { userId: tutorUser.id, bio: 'Experienced tutor', hourlyRate: 50, approvalStatus: 'approved' }
   });
 
-  await TutorSubject.findOrCreate({ where: { tutorProfileId: profile.id, subjectId: math.id }, defaults: { tutorProfileId: profile.id, subjectId: math.id } });
-  await TutorSubject.findOrCreate({ where: { tutorProfileId: profile.id, subjectId: english.id }, defaults: { tutorProfileId: profile.id, subjectId: english.id } });
+  await TutorSubject.findOrCreate({ where: { tutorProfileId: profile.id, subjectId: math.id }, defaults: { id: 'tutor-math-uuid', tutorProfileId: profile.id, subjectId: math.id } });
+  await TutorSubject.findOrCreate({ where: { tutorProfileId: profile.id, subjectId: english.id }, defaults: { id: 'tutor-english-uuid', tutorProfileId: profile.id, subjectId: english.id } });
 
   console.log('Seed complete:', { tutorUserId: tutorUser.id, profileId: profile.id, subjects: [math.name, english.name] });
   process.exit(0);

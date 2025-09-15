@@ -1,0 +1,6 @@
+{
+  "name": "Test Parent",
+  "email": "parent@test.com",
+  "password": "password123",
+  "role": "parent"
+}
