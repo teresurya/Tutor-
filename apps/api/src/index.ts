@@ -8,6 +8,7 @@ import authRoutes from './routes/auth';
 import tutorRoutes from './routes/tutors';
 import bookingRoutes from './routes/bookings';
 import meetingRoutes from './routes/meeting';
+import adminRoutes from './routes/admin';
 
 async function start() {
   const app = express();
@@ -21,6 +22,7 @@ async function start() {
   app.use('/tutors', tutorRoutes);
   app.use('/bookings', bookingRoutes);
   app.use('/meeting', meetingRoutes);
+  app.use('/admin', adminRoutes);
 
   try {
     if (env.databaseUrl) {

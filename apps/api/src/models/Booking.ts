@@ -1,5 +1,5 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, CreationOptional } from 'sequelize';
-import { sequelize } from './index';
+import { sequelize } from './db';
 
 export class Booking extends Model<InferAttributes<Booking>, InferCreationAttributes<Booking>> {
   declare id: CreationOptional<string>;

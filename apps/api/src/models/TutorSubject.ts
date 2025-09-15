@@ -1,5 +1,5 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model } from 'sequelize';
-import { sequelize } from './index';
+import { sequelize } from './db';
 
 export class TutorSubject extends Model<InferAttributes<TutorSubject>, InferCreationAttributes<TutorSubject>> {
   declare id: string;
